@@ -21,6 +21,7 @@ public class Main {
             System.out.println("7. Mapa con clave String y valor entero");
             System.out.println("8. Introducir valores a un mapa y mostrarlo");
             System.out.println("9. Clase Persona uso de TreeSet");
+            System.out.println("10. Clase Venta, elegir ordenación");
             System.out.println("0. Salir");
             System.out.print("Introduce una opción: ");
 
@@ -221,6 +222,46 @@ public class Main {
                     System.out.println("Personas ordenadas alfabéticamente:");
                     for (Persona persona : personas) {
                         System.out.println(persona.getNombre() + " " + persona.getApellido());
+                    }
+                    break;
+                case 10:
+                    ArrayList<Venta> ventas = new ArrayList<>();
+
+                    Calendar calendar = Calendar.getInstance();
+                    calendar.set(2024, Calendar.MAY, 7);
+                    Date fecha1 = calendar.getTime();
+                    calendar.set(2024, Calendar.JUNE, 6);
+                    Date fecha2 = calendar.getTime();
+                    calendar.set(2022, Calendar.MAY, 5);
+                    Date fecha3 = calendar.getTime();
+
+                    ventas.add(new Venta("Coche", "Diego", 100.0, fecha1));
+                    ventas.add(new Venta("Xilofono", "Marcos", 200.0, fecha2));
+                    ventas.add(new Venta("Hamburgesa", "Abanades", 300.0, fecha3));
+
+                    System.out.println("1. Ordenar por nombre del cliente");
+                    System.out.println("2. Ordenar por precio");
+                    System.out.println("3. Ordenar por fecha");
+
+                    int orden = sc.nextInt();
+                    switch (orden) {
+                        case 1:
+                            ventas.sort(Comparator.comparing(Venta::getNombreCliente));
+                            break;
+                        case 2:
+                            ventas.sort(Comparator.comparing(Venta::getPrecio));
+                            break;
+                        case 3:
+                            ventas.sort(Comparator.comparing(Venta::getFecha));
+                            break;
+                        default:
+                            System.out.println("Opción no válida");
+                            break;
+                    }
+
+                    System.out.println("Ventas ordenadas:");
+                    for (Venta venta : ventas) {
+                        System.out.println("Producto: " + venta.getNombreProducto() + " Cliente: " + venta.getNombreCliente() + " Precio: " + venta.getPrecio() + " Fecha: " + venta.getFecha());
                     }
                     break;
                 case 0:

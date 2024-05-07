@@ -26,6 +26,7 @@ public class Main {
             System.out.println("1. Clase Pareja");
             System.out.println("2. Lista de 100 valores reales");
             System.out.println("3. Lista de 100 valores Pareja enteros");
+            System.out.println("4. Introducir o borrar elementos de la lista");
             System.out.println("0. Salir");
 
             int opcion = sc.nextInt();
@@ -52,6 +53,40 @@ public class Main {
                     }
                     for (Pareja<Double> parejaD : listaParejas) {
                         System.out.println("Primero: " + parejaD.getPrimero() + " Segundo: " + parejaD.getSegundo());
+                    }
+                    break;
+                case 4:
+                    ArrayList<String> lista = new ArrayList<>();
+                    boolean salir = true;
+                    while (salir) {
+
+                        System.out.println("1. Introducir cadena de texto en la lista");
+                        System.out.println("2. Borrar cadena de texto de la lista");
+                        System.out.println("0. Salir");
+                        String op = sc.nextLine();
+
+                        switch (op) {
+                            case "1":
+                                System.out.print("Introduce una cadena: ");
+                                String cadena = sc.nextLine();
+                                lista.add(cadena);
+                                mostrarListaT(lista);
+                                break;
+                            case "2":
+                                if (!lista.isEmpty()) {
+                                    lista.remove(lista.size() - 1);
+                                    mostrarListaT(lista);
+                                } else {
+                                    System.out.println("La lista está vacía. No se puede eliminar ningún elemento.");
+                                }
+                                break;
+                            case "0":
+                                System.out.println("Saliendo del programa...");
+                                salir = false;
+                                break;
+                            default:
+                                System.out.println("Opción no válida. Inténtalo de nuevo.");
+                        }
                     }
                     break;
                 case 0:
@@ -93,7 +128,11 @@ public class Main {
         for (double valor : lista) {
             System.out.println(valor);
         }
+    }
 
-
+    public static void mostrarListaT(ArrayList<String> lista) {
+        for (String valor : lista) {
+            System.out.println(valor);
+        }
     }
 }

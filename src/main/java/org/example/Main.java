@@ -29,6 +29,7 @@ public class Main {
             System.out.print("Introduce una opción: ");
 
             int opcion = sc.nextInt();
+
             switch (opcion) {
                 case 1:
                     Pareja<Double> pareja = new Pareja<>(3.5, 4.5);
@@ -39,7 +40,7 @@ public class Main {
                     System.out.println("Primero: " + parejaS.getPrimero());
                     System.out.println("Segundo: " + parejaS.getSegundo());
 
-                    System.out.println("Pulse :");
+                    System.out.println();
                     break;
                 case 2:
                     ArrayList<Double> listaArrayList = crearListaArrayList();
@@ -49,6 +50,8 @@ public class Main {
                     double[] listaArray = crearListaArray();
                     System.out.println("\nLista con array:");
                     mostrarLista(listaArray);
+
+                    System.out.println();
                     break;
                 case 3:
                     Pareja<Double>[] listaParejas = new Pareja[100];
@@ -58,6 +61,8 @@ public class Main {
                     for (Pareja<Double> parejaD : listaParejas) {
                         System.out.println("Primero: " + parejaD.getPrimero() + " Segundo: " + parejaD.getSegundo());
                     }
+
+                    System.out.println();
                     break;
                 case 4:
                     ArrayList<String> lista = new ArrayList<>();
@@ -128,7 +133,7 @@ public class Main {
                                 break;
                             case 3:
                                 System.out.println("Saliendo del programa...");
-                                System.exit(0);
+                                salirT = false;
                             default:
                                 System.out.println("Opción inválida. Por favor, selecciona una opción válida.");
                                 break;
@@ -193,6 +198,8 @@ public class Main {
                     for (Map.Entry<String, Integer> entry : mapaNumeros.entrySet()) {
                         System.out.println(entry.getKey() + " : " + entry.getValue());
                     }
+
+                    System.out.println();
                     break;
                 case 8:
                     Map<Integer, String> mapa = new HashMap<>();
@@ -216,6 +223,8 @@ public class Main {
                     for (Map.Entry<Integer, String> entry : mapa.entrySet()) {
                         System.out.println(entry.getKey() + " : " + entry.getValue());
                     }
+
+                    System.out.println();
                     break;
                 case 9:
                     TreeSet<Persona> personas = new TreeSet<>();
@@ -228,6 +237,8 @@ public class Main {
                     for (Persona persona : personas) {
                         System.out.println(persona.getNombre() + " " + persona.getApellido());
                     }
+
+                    System.out.println();
                     break;
                 case 10:
                     ArrayList<Venta> ventas = new ArrayList<>();
@@ -268,6 +279,8 @@ public class Main {
                     for (Venta venta : ventas) {
                         System.out.println("Producto: " + venta.getNombreProducto() + " Cliente: " + venta.getNombreCliente() + " Precio: " + venta.getPrecio() + " Fecha: " + venta.getFecha());
                     }
+
+                    System.out.println();
                     break;
                 case 11:
                     try {
@@ -288,7 +301,9 @@ public class Main {
                         throw new RuntimeException(e);
                     } catch (Exception e) {
                         throw new RuntimeException(e);
-                }
+                    }
+
+                    System.out.println();
                     break;
                 case 0:
                     System.exit(0);

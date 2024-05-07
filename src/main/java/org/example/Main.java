@@ -1,9 +1,8 @@
 package org.example;
 
-import java.util.Scanner;
-import java.util.ArrayList;
-import java.util.Random;
-import org.example.Ejercicios.Pareja;
+import java.util.*;
+
+import org.example.Ejercicios.*;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -19,6 +18,9 @@ public class Main {
             System.out.println("4. Introducir cadenas de texto en una lista y borrarlas");
             System.out.println("5. Introducir cadenas de texto por posicion y borrar");
             System.out.println("6. Introducir cadena de texto, ordenar y borrar");
+            System.out.println("7. Mapa con clave String y valor entero");
+            System.out.println("8. Introducir valores a un mapa y mostrarlo");
+            System.out.println("9. Clase Persona uso de TreeSet");
             System.out.println("0. Salir");
             System.out.print("Introduce una opción: ");
 
@@ -164,6 +166,61 @@ public class Main {
                                 System.out.println("Opción inválida. Por favor, selecciona una opción válida.");
                                 break;
                         }
+                    }
+                    break;
+                case 7:
+                    Map<String, Integer> mapaNumeros = new HashMap<>();
+
+                    mapaNumeros.put("cero", 0);
+                    mapaNumeros.put("uno", 1);
+                    mapaNumeros.put("dos", 2);
+                    mapaNumeros.put("tres", 3);
+                    mapaNumeros.put("cuatro", 4);
+                    mapaNumeros.put("cinco", 5);
+                    mapaNumeros.put("seis", 6);
+                    mapaNumeros.put("siete", 7);
+                    mapaNumeros.put("ocho", 8);
+                    mapaNumeros.put("nueve", 9);
+                    mapaNumeros.put("diez", 10);
+
+                    System.out.println("Contenido del mapa:");
+                    for (Map.Entry<String, Integer> entry : mapaNumeros.entrySet()) {
+                        System.out.println(entry.getKey() + " : " + entry.getValue());
+                    }
+                    break;
+                case 8:
+                    Map<Integer, String> mapa = new HashMap<>();
+
+                    System.out.println("Introduzca pares de numero/letra. (Para salir introduce -1)");
+                    int num;
+                    String letra;
+
+                    do {
+                        System.out.print("Introduce un número: ");
+                        num = sc.nextInt();
+                        if (num == -1) {
+                            break;
+                        }
+                        System.out.print("Introduce una letra: ");
+                        letra = sc.nextLine();
+                        mapa.put(num, letra);
+                    } while (num != -1);
+
+                    System.out.println("Contenido del mapa:");
+                    for (Map.Entry<Integer, String> entry : mapa.entrySet()) {
+                        System.out.println(entry.getKey() + " : " + entry.getValue());
+                    }
+                    break;
+                case 9:
+                    TreeSet<Persona> personas = new TreeSet<>();
+                    personas.add(new Persona("Juan", "Pérez"));
+                    personas.add(new Persona("Ana", "Gómez"));
+                    personas.add(new Persona("Pedro", "Martínez"));
+                    personas.add(new Persona("María", "García"));
+
+                    System.out.println("Personas ordenadas alfabéticamente:");
+                    for (Persona persona : personas) {
+                        System.out.println(persona.getNombre() + " " + persona.getApellido());
                     }
                     break;
                 case 0:

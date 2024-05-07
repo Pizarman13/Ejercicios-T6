@@ -12,16 +12,6 @@ public class Main {
     public static Scanner sc = new Scanner(System.in);
     public static void main(String[] args) {
 
-        // Lista utilizando la clase ArrayList
-        ArrayList<Double> listaArrayList = crearListaArrayList();
-        System.out.println("Lista con ArrayList:");
-        mostrarListaA(listaArrayList);
-
-        // Lista utilizando la clase array primitivo
-        double[] listaArray = crearListaArray();
-        System.out.println("\nLista con array:");
-        mostrarLista(listaArray);
-
         while (true) {
             System.out.println("1. Clase Pareja");
             System.out.println("2. Lista de 100 valores reales");
@@ -43,8 +33,11 @@ public class Main {
                     System.out.println("Segundo: " + parejaS.getSegundo());
                     break;
                 case 2:
+                    ArrayList<Double> listaArrayList = crearListaArrayList();
                     System.out.println("Lista con ArrayList:");
                     mostrarListaA(listaArrayList);
+
+                    double[] listaArray = crearListaArray();
                     System.out.println("\nLista con array:");
                     mostrarLista(listaArray);
                     break;
@@ -110,12 +103,8 @@ public class Main {
                                 String cadena = sc.nextLine();
                                 System.out.print("Introduce la posición donde insertar la cadena (0 - " + listaT.size() + "): ");
                                 int posicion = sc.nextInt();
-                                if (posicion >= 0 && posicion <= listaT.size()) {
-                                    listaT.add(posicion, cadena);
-                                    System.out.println("Cadena insertada correctamente.");
-                                } else {
-                                    System.out.println("Posición inválida. La cadena no fue insertada.");
-                                }
+                                anadirCadena(listaT, cadena, posicion);
+                                mostrarListaT(listaT);
                                 break;
                             case 2:
                                 if (listaT.isEmpty()) {
@@ -125,12 +114,8 @@ public class Main {
 
                                 System.out.print("Introduce la posición de la cadena a eliminar (0 - " + (listaT.size() - 1) + "): ");
                                 int posicionEliminar = sc.nextInt();
-                                if (posicionEliminar >= 0 && posicionEliminar < listaT.size()) {
-                                    listaT.remove(posicionEliminar);
-                                    System.out.println("Cadena eliminada correctamente.");
-                                } else {
-                                    System.out.println("Posición inválida. No se eliminó ninguna cadena.");
-                                }
+                                eliminarCadena(listaT, posicionEliminar);
+                                mostrarListaT(listaT);
                                 break;
                             case 3:
                                 System.out.println("Saliendo del programa...");
@@ -185,6 +170,24 @@ public class Main {
     public static void mostrarListaT(ArrayList<String> lista) {
         for (String valor : lista) {
             System.out.println(valor);
+        }
+    }
+
+    public static void anadirCadena(ArrayList<String> lista, String cadena, int posicion) {
+        if (posicion >= 0 && posicion <= lista.size()) {
+            lista.add(posicion, cadena);
+            System.out.println("Cadena añadida correctamente.");
+        } else {
+            System.out.println("Posición inválida. No se añadió la cadena.");
+        }
+    }
+
+    public static void eliminarCadena(ArrayList<String> lista, int posicion) {
+        if (posicion >= 0 && posicion < lista.size()) {
+            lista.remove(posicion);
+            System.out.println("Cadena eliminada correctamente.");
+        } else {
+            System.out.println("Posición inválida. No se eliminó la cadena.");
         }
     }
 }

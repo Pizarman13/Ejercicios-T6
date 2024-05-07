@@ -1,5 +1,7 @@
 package org.example;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.*;
 
 import org.example.Ejercicios.*;
@@ -22,6 +24,7 @@ public class Main {
             System.out.println("8. Introducir valores a un mapa y mostrarlo");
             System.out.println("9. Clase Persona uso de TreeSet");
             System.out.println("10. Clase Venta, elegir ordenación");
+            System.out.println("11. Ordenar líneas de un fichero");
             System.out.println("0. Salir");
             System.out.print("Introduce una opción: ");
 
@@ -35,6 +38,8 @@ public class Main {
                     Pareja<String> parejaS = new Pareja<>("Hola", "Mundo");
                     System.out.println("Primero: " + parejaS.getPrimero());
                     System.out.println("Segundo: " + parejaS.getSegundo());
+
+                    System.out.println("Pulse :");
                     break;
                 case 2:
                     ArrayList<Double> listaArrayList = crearListaArrayList();
@@ -263,6 +268,27 @@ public class Main {
                     for (Venta venta : ventas) {
                         System.out.println("Producto: " + venta.getNombreProducto() + " Cliente: " + venta.getNombreCliente() + " Precio: " + venta.getPrecio() + " Fecha: " + venta.getFecha());
                     }
+                    break;
+                case 11:
+                    try {
+                        String nomArchivo = "ficheros/fichero.txt";
+                        ArrayList<String> lineas = new ArrayList<>();
+                        Scanner sc = new Scanner(new File(nomArchivo));
+
+                        while (sc.hasNextLine()) {
+                            lineas.add(sc.nextLine());
+                        }
+
+                        lineas.sort(String::compareTo);
+                        for (String linea : lineas) {
+                            System.out.println(linea);
+                        }
+
+                    } catch (FileNotFoundException e) {
+                        throw new RuntimeException(e);
+                    } catch (Exception e) {
+                        throw new RuntimeException(e);
+                }
                     break;
                 case 0:
                     System.exit(0);

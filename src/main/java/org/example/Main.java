@@ -26,8 +26,10 @@ public class Main {
             System.out.println("1. Clase Pareja");
             System.out.println("2. Lista de 100 valores reales");
             System.out.println("3. Lista de 100 valores Pareja enteros");
-            System.out.println("4. Introducir o borrar elementos de la lista");
+            System.out.println("4. Introducir cadenas de texto en una lista y borrarlas");
+            System.out.println("5. Introducir cadenas de texto por posicion y borrar");
             System.out.println("0. Salir");
+            System.out.print("Introduce una opción: ");
 
             int opcion = sc.nextInt();
             switch (opcion) {
@@ -63,6 +65,7 @@ public class Main {
                         System.out.println("1. Introducir cadena de texto en la lista");
                         System.out.println("2. Borrar cadena de texto de la lista");
                         System.out.println("0. Salir");
+                        System.out.print("Introduce una opción: ");
                         String op = sc.nextLine();
 
                         switch (op) {
@@ -86,6 +89,55 @@ public class Main {
                                 break;
                             default:
                                 System.out.println("Opción no válida. Inténtalo de nuevo.");
+                        }
+                    }
+                    break;
+                case 5:
+                    ArrayList<String> listaT = new ArrayList<>();
+                    boolean salirT = true;
+
+                    while (salirT) {
+                        System.out.println("1. Insertar cadena");
+                        System.out.println("2. Eliminar cadena");
+                        System.out.println("3. Salir");
+                        System.out.print("Introduce una opción: ");
+
+                        int op = sc.nextInt();
+
+                        switch (op) {
+                            case 1:
+                                System.out.print("Introduce la cadena a insertar: ");
+                                String cadena = sc.nextLine();
+                                System.out.print("Introduce la posición donde insertar la cadena (0 - " + listaT.size() + "): ");
+                                int posicion = sc.nextInt();
+                                if (posicion >= 0 && posicion <= listaT.size()) {
+                                    listaT.add(posicion, cadena);
+                                    System.out.println("Cadena insertada correctamente.");
+                                } else {
+                                    System.out.println("Posición inválida. La cadena no fue insertada.");
+                                }
+                                break;
+                            case 2:
+                                if (listaT.isEmpty()) {
+                                    System.out.println("La lista está vacía. No se eliminó ninguna cadena.");
+                                    break;
+                                }
+
+                                System.out.print("Introduce la posición de la cadena a eliminar (0 - " + (listaT.size() - 1) + "): ");
+                                int posicionEliminar = sc.nextInt();
+                                if (posicionEliminar >= 0 && posicionEliminar < listaT.size()) {
+                                    listaT.remove(posicionEliminar);
+                                    System.out.println("Cadena eliminada correctamente.");
+                                } else {
+                                    System.out.println("Posición inválida. No se eliminó ninguna cadena.");
+                                }
+                                break;
+                            case 3:
+                                System.out.println("Saliendo del programa...");
+                                System.exit(0);
+                            default:
+                                System.out.println("Opción inválida. Por favor, selecciona una opción válida.");
+                                break;
                         }
                     }
                     break;

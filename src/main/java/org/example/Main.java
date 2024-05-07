@@ -18,6 +18,7 @@ public class Main {
             System.out.println("3. Lista de 100 valores Pareja enteros");
             System.out.println("4. Introducir cadenas de texto en una lista y borrarlas");
             System.out.println("5. Introducir cadenas de texto por posicion y borrar");
+            System.out.println("6. Introducir cadena de texto, ordenar y borrar");
             System.out.println("0. Salir");
             System.out.print("Introduce una opción: ");
 
@@ -126,6 +127,45 @@ public class Main {
                         }
                     }
                     break;
+                case 6:
+                    ArrayList<String> listaOrdenada = new ArrayList<>();
+                    boolean salirOrdenar = true;
+
+                    while (salirOrdenar) {
+                        System.out.println("1. Introducir cadena y mostrarla ordenada");
+                        System.out.println("2. Eliminar cadena");
+                        System.out.println("0. Salir");
+                        System.out.print("Introduce una opción: ");
+                        int op = sc.nextInt();
+
+                        switch (op) {
+                            case 1:
+                                System.out.print("Introduce la cadena a insertar: ");
+                                String cadena = sc.nextLine();
+                                listaOrdenada.add(cadena);
+                                listaOrdenada.sort(String::compareTo);
+                                mostrarListaT(listaOrdenada);
+                                break;
+                            case 2:
+                                if (listaOrdenada.isEmpty()) {
+                                    System.out.println("La lista está vacía. No se eliminó ninguna cadena.");
+                                    break;
+                                }
+
+                                System.out.print("Introduce la cadena a eliminar: ");
+                                String cadenaEliminar = sc.nextLine();
+
+                                eliminarPorCadena(listaOrdenada, cadenaEliminar);
+                                break;
+                            case 0:
+                                System.out.println("Saliendo del programa...");
+                                salirOrdenar = false;
+                            default:
+                                System.out.println("Opción inválida. Por favor, selecciona una opción válida.");
+                                break;
+                        }
+                    }
+                    break;
                 case 0:
                     System.exit(0);
                     break;
@@ -188,6 +228,15 @@ public class Main {
             System.out.println("Cadena eliminada correctamente.");
         } else {
             System.out.println("Posición inválida. No se eliminó la cadena.");
+        }
+    }
+
+    public static void eliminarPorCadena(ArrayList<String> lista, String cadena) {
+        if (lista.contains(cadena)) {
+            lista.remove(cadena);
+            System.out.println("Cadena eliminada correctamente.");
+        } else {
+            System.out.println("La cadena no existe en la lista. No se eliminó ninguna cadena.");
         }
     }
 }
